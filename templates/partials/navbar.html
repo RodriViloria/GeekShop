@@ -1,0 +1,47 @@
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light" id="navbar_oasis">
+    <div class="container">
+        <img class="d-inline-block align-text-top logo_Infinity" />
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+            aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarScroll">
+            <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" class="nav_ul" style="--bs-scroll-height: 100px">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %} " {% if request.resolver_match.url_name == 'index' %}class="active"{% endif %}>Home</a>
+                </li>
+                {% if request.resolver_match.url_name != 'about' %}
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="% url '500' %}">Nuestra experiencia</a>
+                </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'about' %}" {% if request.resolver_match.url_name == 'about' %}class="active"{% endif %}>Acerca De</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#base-contact"> Contacto</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <form class="d-flex" id="login-form">
+                <p id="items" class="nav-item bi bi-brightness-alt-high"></p>
+                <div class="form-check form-switch slider">
+                    <input title="checkbox-datascheme" class="form-check-input" type="checkbox" role="switch"
+                        id="slider" />
+                </div>
+                <ul>
+                    <li id="items" class="bi bi-moon-fill"></li>
+                </ul>
+                <a href="{% url 'login' %}" class="nav-link">
+                <li id="items_user" class="bi bi-person-circle bi-brightness-alt-high" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling">
+                  </li>
+                </a>
+            </li>
+
+            </form>
+
+    </form>
+        </div>
+    </div>
+</nav>
+{% endblock %}

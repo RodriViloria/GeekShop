@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h2>Agregar Cliente</h2>
+  <form method="post" action="{% url 'cliente' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+  </form>
+  <h1>Mis Clientes</h1>
+  <ul>
+      {% for cliente in clientes %}
+          <li>{{ cliente.nombre }}</li>
+      {% endfor %}
+  </ul>
+  <a href="{% url 'index' %}">Volver al Inicio</a>
+{% endblock %}

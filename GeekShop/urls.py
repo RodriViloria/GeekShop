@@ -15,8 +15,19 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path, re_path
+from django.conf import settings
+from AppGeek.views import pagina_no_encontrada, error_servidor
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('AppGeek.urls')),
+    path('', include('accounts.urls')),
 ]
+
+if settings.DEBUG:
+
+    handler500 = error_servidor
+else:
+    handler500 = 'AppGeek.views.error_servidor'

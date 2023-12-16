@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="kanban-board">
+  <div class="kanban-column">
+    <h2>Abierto</h2>
+    {% for trekking in trekking_abierto %}
+      <div class="card">
+                <div class="abierto">
+          <p>{{ trekking.estado }}</p>
+        </div>
+        <h5 class="card-title">{{ trekking.nombre }}</h5>
+        <p>Persona que agregó el trekking: {{ trekking.usuario.username }}</p>
+        <p>Fecha de creación: {{ trekking.fecha_inicio }}</p>
+        <p>Dificultad: {{ trekking.dificultad }}</p>
+        {% if trekking.comments.exists %}
+            <p>Total de comentarios: {{ trekking.comments.count }}</p>
+        {% else %}
+            <p>No hay comentarios aún.</p>
+        {% endif %}
+        <p>Last updated: {{ trekking.last_updated|timesince }} ago</p>
+        <a class="btn btn-primary" href="{% url 'trekking_detail' trekking_id=trekking.id %}">Ver Detalle</a>
+      </div>
+    {% endfor %}
+    {% if not trekking_abierto %}
+      <p class="no-cards">No hay tarjetas en esta categoría.</p>
+    {% endif %}
+  </div>
+
+  <div class="kanban-column">
+    <h2>En Progreso</h2>
+    {% for trekking in trekking_en_progreso %}
+      <div class="card">
+        <div class="enprogreso">
+          <p>{{ trekking.estado }}</p>
+        </div>
+        <h5 class="card-title">{{ trekking.nombre }}</h5>
+        <p>Persona que agregó el trekking: {{ trekking.usuario.username }}</p>
+        <p>Fecha de creación: {{ trekking.fecha_inicio }}</p>
+        <p>Dificultad: {{ trekking.dificultad }}</p>
+        {% if trekking.comments.exists %}
+            <p>Total de comentarios: {{ trekking.comments.count }}</p>
+        {% else %}
+            <p>No hay comentarios aún.</p>
+        {% endif %}
+        <p>Last updated: {{ trekking.last_updated|timesince }} ago</p>
+        <a class="btn btn-primary"  href="{% url 'trekking_detail' trekking_id=trekking.id %}">Ver Detalle</a>
+      </div>
+    {% endfor %}
+    {% if not trekking_en_progreso %}
+      <p class="no-cards">No hay tarjetas en esta categoría.</p>
+    {% endif %}
+  </div>
+
+  <div class="kanban-column">
+    <h2>Cerrado</h2>
+    {% for trekking in trekking_cerrado %}
+      <div class="card">
+        <div class="cancelado">
+          <p>{{ trekking.estado }}</p>
+        </div>
+        <!-- Contenido de la tarjeta para 'Cerrado' -->
+        <h5 class="card-title">{{ trekking.nombre }}</h5>
+        <p>Persona que agregó el trekking: {{ trekking.usuario.username }}</p>
+        <p>Fecha de creación: {{ trekking.fecha_inicio }}</p>
+        <p>Dificultad: {{ trekking.dificultad }}</p>
+        {% if trekking.comments.exists %}
+            <p>Total de comentarios: {{ trekking.comments.count }}</p>
+        {% else %}
+            <p>No hay comentarios aún.</p>
+        {% endif %}
+        <p>Last updated: {{ trekking.last_updated|timesince }} ago</p>
+        <a class="btn btn-primary" href="{% url 'trekking_detail' trekking_id=trekking.id %}">Ver Detalle</a>
+      </div>
+    {% endfor %}
+    {% if not trekking_cerrado %}
+      <p class="no-cards">No hay tarjetas en esta categoría.</p>
+    {% endif %}
+  </div>
+</div>
+
+<a aria-current="page" class="btn btn-primary" href="{% url 'crear_reporte' %}">Agregar</a>
+<!-- Modal -->
+
+
+{% endblock %}

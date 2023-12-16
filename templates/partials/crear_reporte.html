@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div id="contenedorFormulario">
+  <h2> Crear reporte</h2>
+  <form id="miFormularios" method="post" action="{% url 'crear_reporte' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Enviar Reporte</button>
+  </form>
+</div>
+  {% endblock %}

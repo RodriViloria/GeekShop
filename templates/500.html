@@ -1,0 +1,10 @@
+{% extends 'accounts/base_login.html' %}
+
+{% block content %}
+
+<div>
+    <h2>Error del Servidor (500)</h2>
+    <p>Lo sentimos, algo salió mal en el servidor. Por favor, inténtalo de nuevo más tarde.</p>
+    <a class="btn btn-primary" href="{% url 'index' %}" class="btn btn-warning">Volver al Inicio</a>
+
+ {% endblock %}

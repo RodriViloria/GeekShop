@@ -1,0 +1,47 @@
+<!-- trekking_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ trekking.nombre }}</h1>
+    <!-- Otros detalles del trekking -->
+
+    {% if trekking.imagen %}
+        <img src="{{ trekking.imagen.url }}" alt="{{ trekking.nombre }}">
+    {% else %}
+        <p>No hay imagen disponible para este trekking.</p>
+    {% endif %}
+
+    <!-- Listado de comentarios -->
+    <ul>
+        {% if comments %}
+            {% for comment in comments %}
+                <li>
+                    {{ comment.usuario.username }} - {{ comment.content }}
+                    {% if comment.estado and comment.content == 'Cambio de estado' %}
+                        <p>{{ comment.content }}: {{ comment.estado }}</p>
+                    {% endif %}
+                    {% if comment.imagen %}
+                        <img src="{{ comment.imagen.url }}" alt="Comentario Imagen">
+                    {% endif %}
+
+                    {% if comment.usuario == request.user %}
+                        <form method="post" action="{% url 'trekking_detail' trekking_id=trekking.id %}" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="delete_comment" value="{{ comment.id }}">
+                            <button type="submit" >Eliminar</button>
+                            <button type="submit" class="bi bi-eraser-fill btn btn-danger" title="Eliminar" ></button>
+                        </form>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No hay comentarios aún.</li>
+        {% endif %}
+    </ul>
+
+    <form id="miFormulario" method="post" action="{% url 'trekking_detail' trekking_id=trekking.id %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" id="guardarComentario">Guardar Comentario</button>
+    </form>
+{% endblock %}

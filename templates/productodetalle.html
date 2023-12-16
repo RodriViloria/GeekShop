@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="card" style="width: 18rem;">
+    {% if producto.imagen %}
+      <img src="{{ producto.imagen.url }}" class="card-img-top" alt="{{ producto.nombre }}">
+    {% else %}
+      <p>Sin imagen</p>
+    {% endif %}
+    <div class="card-body">
+      <h5 class="card-title">{{ producto.nombre }}</h5>
+      <p class="card-text">{{ producto.descripcion }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Precio: ${{ producto.precio }}</li>
+      <li class="list-group-item">Stock: {{ producto.stock }}</li>
+    </ul>
+    <div class="card-body">
+      <a href="{% url 'editar_producto' pk=producto.id %}" class="btn btn-primary">Editar Producto</a>
+      <a href="{% url 'producto' %}" class="btn btn-primary">Gestión Productos</a>
+    </div>
+  </div>
+{% endblock %}
