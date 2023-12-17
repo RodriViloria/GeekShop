@@ -1,3 +1,4 @@
+# En views.py
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseRedirect
 from django.utils.decorators import method_decorator
@@ -6,8 +7,6 @@ from .models import Trekking, Comments, Producto, Cliente, Categoria, Trekking
 from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import CategoriaForm, ProductoForm, ClienteForm, BusquedaForm, CommentForm, TrekkingForm
 from django.contrib.auth.decorators import login_required
-
-
 # pylint: disable=no-member
 
 

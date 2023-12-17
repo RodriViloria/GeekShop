@@ -1,10 +1,13 @@
-from django.contrib.auth import authenticate, login, logout
+# pylint: disable=no-member
+
+from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.shortcuts import render, redirect
 from django import forms
 from .models import Avatar
 from accounts.forms import UserRegisterForm, UserUpdateForm, AvatarUpdateForm
+
 
 
 def home(request):

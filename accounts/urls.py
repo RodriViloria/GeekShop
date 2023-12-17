@@ -1,6 +1,7 @@
 from django.contrib.auth.views import LogoutView
 from django.urls import path
-from accounts.views import editar_avatar_request, editar_request, login_request, register_request, home, logout_view
+from accounts.views import editar_avatar_request, editar_request, login_request, register_request, home,logout_view
+
 
 urlpatterns = [
     path('register/', register_request, name="register"),

@@ -11,7 +11,7 @@ urlpatterns = [
     path('cliente/', clientes, name='cliente'),
     path('buscar_producto/', buscar_producto, name='buscar_producto'),
     path('', lambda request: redirect('index/'), name='inicio'),
-    path('crear_producto/', crear_producto, name='crear_producto'),
+     path('crear_producto/', crear_producto, name='crear_producto'),
     path('about/', about, name='about'),
     path('home/', include('accounts.urls')),
     path('producto/<int:pk>', ProductoDetalleView.as_view(), name="ProductoDetail"),
